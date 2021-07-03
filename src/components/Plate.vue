@@ -256,17 +256,14 @@ export default {
     top: 10em;
   }
 
-  .cinza .cidade {
+  .cidade {
+    text-transform:uppercase;
+    font-size:20em;
     font-family: 'Unica One', cursive;
     letter-spacing: 0.4em
   }
 
-  .cinza.moto .cidade {
+  .moto .cidade {
     letter-spacing: 0.1em
-  }
-
-  .cidade {
-    text-transform:uppercase;
-    font-size:20em; 
   }
 </style>
