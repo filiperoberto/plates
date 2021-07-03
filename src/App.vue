@@ -50,6 +50,8 @@ export default {
   }
   .placa {
     margin-bottom: 10px;
+
+    /* O tamanho da placa depende desse font-size, para deixar ela maoir ou menor só alterar aqui \/ **/
     font-size: 0.6px;
   }
 
