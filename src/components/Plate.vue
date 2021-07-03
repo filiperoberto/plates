@@ -70,6 +70,9 @@ export default {
 }
 </script>
 <style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Russo+One&display=swap');
 
   .plate, .plate * {
     box-sizing: border-box;
@@ -191,11 +194,18 @@ export default {
   .plate-container {
     padding:0.4em;
     letter-spacing: 0.2em;
-    font-size: 50em;
+    font-size: 90em;
+  }
+
+  .mercosul .plate-container {
+    font-family: 'Cute Font', cursive;
+    font-weight:bold;
+    padding: 0.1em;
   }
 
   .cinza .plate-container {
-    font-size: 60em
+    font-size: 60em;
+    font-family: 'Russo One', sans-serif;
   }
 
   .plate-container > span {
@@ -244,6 +254,15 @@ export default {
   .moto .bandeira {
     font-size: 0.8em;
     top: 10em;
+  }
+
+  .cinza .cidade {
+    font-family: 'Unica One', cursive;
+    letter-spacing: 0.4em
+  }
+
+  .cinza.moto .cidade {
+    letter-spacing: 0.1em
   }
 
   .cidade {
