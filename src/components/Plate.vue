@@ -1,5 +1,5 @@
 <template>
-  <div class='plate' :class='`plate-${type}`' :class="{'mercosul': mercosul, 'cinza': !mercosul}">
+  <div class='plate' :class='`plate-${type}`' :class="{'mercosul': mercosul, 'cinza': !mercosul, 'moto': moto}">
     <span class='header header-mercosul' v-if='mercosul'>
       <span class='cidade'>BRASIL</span>
       <bandeira class='bandeira'/>
@@ -12,7 +12,7 @@
     <div class='plate-container' ref='plateContainer'>
       <span>{{letters}}</span>
       <span class='espacamento' v-if='!mercosul && !wrap'>-</span>
-      <span>{{numbers}}</span>
+      <span class='numbers'>{{numbers}}</span>
     </div>
   </div>
 </template>
@@ -42,6 +42,10 @@ export default {
     municipio: {
       type: String,
       default: 'municipio'
+    },
+    moto: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -77,6 +81,18 @@ export default {
     border-style: solid;
     border-radius: 7em;
     text-align:center;
+  }
+
+  .plate.moto {
+    width: fit-content;
+  }
+
+  .plate.moto .espacamento {
+    display: none;
+  }
+
+  .plate.moto .numbers {
+    display: block;
   }
 
   .mercosul.plate-particular {
@@ -192,6 +208,11 @@ export default {
     position: absolute;
     top:5em;
     right:5em;
+  }
+
+  .moto .bandeira {
+    font-size: 0.8em;
+    top: 10em;
   }
 
   .cidade {
