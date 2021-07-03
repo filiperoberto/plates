@@ -50,7 +50,7 @@ export default {
   }
   .placa {
     margin-bottom: 10px;
-    font-size: 0.7px;
+    font-size: 0.6px;
   }
 
 </style>
