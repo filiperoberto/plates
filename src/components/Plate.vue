@@ -1,8 +1,8 @@
 <template>
   <div class='plate' :class='`plate-${type}`' :class="{'mercosul': mercosul, 'cinza': !mercosul}">
     <span class='header header-mercosul' v-if='mercosul'>
-      <span>BRASIL</span>
-      <bandeira/>
+      <span class='cidade'>BRASIL</span>
+      <bandeira class='bandeira'/>
     </span>
     <span v-else class='header header-cinza'>
       <span class='detalhe-circulo'></span>
@@ -73,9 +73,9 @@ export default {
 
   .plate {
     width: 100%;
-    border-width: 10px;
+    border-width: 10em;
     border-style: solid;
-    border-radius: 7px;
+    border-radius: 7em;
     text-align:center;
   }
 
@@ -150,12 +150,12 @@ export default {
 
   .plate-container {
     padding:0.4em;
-    letter-spacing: 10px;
-    font-size: 50px;
+    letter-spacing: 0.2em;
+    font-size: 50em;
   }
 
   .cinza .plate-container {
-    font-size: 60px
+    font-size: 60em
   }
 
   .plate-container > span {
@@ -163,7 +163,7 @@ export default {
   }
 
   .header {
-    height:45px;
+    height:40em;
     margin: 0;
     width:100%;
     position:relative;
@@ -176,15 +176,11 @@ export default {
   .detalhe-circulo {
     display:inline-block;
     width: 10%;
-    height:10px;
+    height:10em;
     background: gray;
-    border-radius: 5px;
-    margin-right:10px;
+    border-radius: 5em;
+    margin-right:10em;
     display:none;
-  }
-
-  .header-cinza {
-    font-size:20px; 
   }
 
   .header-mercosul {
@@ -192,7 +188,14 @@ export default {
     color: white;
   }
 
+  .bandeira {
+    position: absolute;
+    top:5em;
+    right:5em;
+  }
+
   .cidade {
     text-transform:uppercase;
+    font-size:20em; 
   }
 </style>
