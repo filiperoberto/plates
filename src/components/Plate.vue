@@ -13,15 +13,22 @@
       <span class='cidade'>SC - FLORIANÓPOLIS</span>
       <span class='detalhe-circulo'></span>
     </span>
-    <div class='plate-container'>
+    <div class='plate-container' ref='plateContainer'>
       <span>{{letters}}</span>
+      <span class='espacamento' v-if='!mercosul && !wrap'>-</span>
       <span>{{numbers}}</span>
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
+  setup() {
+    const plateContainer = ref(null)
+    return { plateContainer }
+  },
   props: {
     plate: String,
     type: {
@@ -38,6 +45,14 @@ export default {
     },
     mercosul () {
       return isNaN(parseInt(this.plate.slice(4,5)))
+    },
+    wrap () {
+      if(!this.plateContainer) {
+        return;
+      }
+      const tamanhoFilhos = [...this.plateContainer.children].map(e => e.offsetWidth).reduce((a,b)=> a+b,0)
+      const tamanhoPai = this.plateContainer.offsetWidth
+      return tamanhoPai < tamanhoFilhos
     }
   }
 }
@@ -102,10 +117,37 @@ export default {
     background:#e1422e;
   }
 
+  .cinza.plate-especial {
+    border-color:#3f7c30;
+    color:white;
+    background:#519d3c;
+  }
+
+  .cinza.plate-oficial {
+    border-color:#244180;
+    background:#2d52a0;
+    color:white;
+  }
+
+  .cinza.plate-colecionador {
+    border-color:#000000;
+    background:#1b1b1b;
+    color:#c2c2c2;
+  }
+
+  .cinza.plate-diplomatico {
+    border-color:#c2c2c2;
+    color:#b23222;
+  }
+
   .plate-container {
     padding:0.4em;
     letter-spacing: 10px;
     font-size: 50px;
+  }
+
+  .cinza .plate-container {
+    font-size: 60px
   }
 
   .plate-container > span {
@@ -215,7 +257,6 @@ export default {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
 }
-
 .brasil-flag .circle:before,
 .brasil-flag .circle:after {
   width: 18px;
@@ -239,5 +280,11 @@ export default {
   margin-top: -2px;
   margin-left: -10px;
   background-color: #1651b8;
+}
+
+@media (max-width: 10px) {
+  .espacamento {
+    display:none;
+  }
 }
 </style>
