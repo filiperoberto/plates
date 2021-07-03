@@ -19,7 +19,7 @@ export default {
         { placa : 'MJL9746', tipo: 'comercial'},
         { placa : 'MJL9746', tipo: 'especial'},
         { placa : 'MJL9746', tipo: 'oficial'},
-        { placa : 'MJL9746', tipo: 'colecionador'},
+        { placa : 'BRA0A19', tipo: 'colecionador'},
         { placa : 'MJL9746', tipo: 'diplomatico'},
         { placa : 'MJL9H46', tipo: 'particular'},
         { placa : 'MJL9H46', tipo: 'comercial'},

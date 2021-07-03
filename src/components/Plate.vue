@@ -203,6 +203,11 @@ export default {
     padding: 0.1em;
   }
 
+  .moto.mercosul .plate-container {
+    padding: 0 0.4em;
+    line-height: 1em;
+  }
+
   .cinza .plate-container {
     font-size: 60em;
     font-family: 'Russo One', sans-serif;
