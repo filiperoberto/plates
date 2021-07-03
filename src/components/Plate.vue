@@ -1,6 +1,18 @@
 <template>
-  <div class='plate'>
-    <span class='header'>BRASIL</span>
+  <div class='plate' :class='`plate-${type}`' :class="{'mercosul': mercosul, 'cinza': !mercosul}">
+    <span class='header header-mercosul' v-if='mercosul'>
+      <span>BRASIL</span>
+      <!--https://blog.nandomoreira.dev/criando-a-bandeira-do-brasil-apenas-com-css-->
+      <div class="brasil-flag">
+        <div class="losangue"></div>
+        <div class="circle"></div>
+      </div>
+    </span>
+    <span v-else class='header header-cinza'>
+      <span class='detalhe-circulo'></span>
+      <span class='cidade'>SC - FLORIANÓPOLIS</span>
+      <span class='detalhe-circulo'></span>
+    </span>
     <div class='plate-container'>
       <span>{{letters}}</span>
       <span>{{numbers}}</span>
@@ -11,7 +23,11 @@
 <script>
 export default {
   props: {
-    plate: String
+    plate: String,
+    type: {
+      type: String,
+      default: 'particular'
+    }
   },
   computed: {
     letters() {
@@ -19,20 +35,71 @@ export default {
     },
     numbers() {
       return this.plate.slice(3,8)
+    },
+    mercosul () {
+      return isNaN(parseInt(this.plate.slice(4,5)))
     }
   }
 }
 </script>
 <style scoped>
+
   .plate, .plate * {
     box-sizing: border-box;
   }
 
   .plate {
     width: 100%;
-    border: 9px solid #101c36;
-    border-radius: 5px;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 7px;
     text-align:center;
+  }
+
+  .mercosul.plate-particular {
+    border-color: #101c36;
+    color: #101c36;
+  }
+
+  .mercosul.plate-comercial {
+    border-color: #e1422e;
+    color: #e1422e;
+  }
+
+  .mercosul.plate-especial {
+    border-color: #519d3c;
+    color:#519d3c;
+  }
+
+  .mercosul.plate-oficial {
+    border-color: #2d52a0;
+    color: #2d52a0;
+  }
+
+  .mercosul.plate-colecionador {
+    border-color:#818181;
+    color:#818181;
+  }
+
+  .mercosul.plate-diplomatico {
+    border-color: #d09a36;
+    color:#d09a36;
+  }
+
+  .plate.cinza {
+    font-weight:bolder;
+  }
+
+  .cinza.plate-particular {
+    border-color: #a5a5a5;
+    color: #101c36;
+    background: #c2c2c2;
+  }
+
+  .cinza.plate-comercial {
+    border-color:#b23222;
+    color:white;
+    background:#e1422e;
   }
 
   .plate-container {
@@ -46,14 +113,131 @@ export default {
   }
 
   .header {
-    display: block;
-    background: #1e4ab3;
-    height: 30px;
+    height:45px;
     margin: 0;
     width:100%;
-    display: flex;
+    position:relative;
+
+    display:flex;
     align-items: center;
-    color: white;
     justify-content:center;
   }
+
+  .detalhe-circulo {
+    display:inline-block;
+    width: 10%;
+    height:10px;
+    background: gray;
+    border-radius: 5px;
+    margin-right:10px;
+    display:none;
+  }
+
+  .header-cinza {
+    font-size:20px; 
+  }
+
+  .header-mercosul {
+    background: #1e4ab3;
+    color: white;
+  }
+
+  .brasil-flag {
+    position: absolute;
+    background-color: #16b83e;
+    width: 50px;
+    height: 30px;
+    right:5px;
+    top: 5px;
+    border: 1px solid white;
+  }
+
+  .brasil-flag .losangue:before,
+  .brasil-flag .losangue:after {
+    position: absolute;
+  }
+
+  .brasil-flag .losangue {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+.brasil-flag .losangue:before,
+.brasil-flag .losangue:after {
+  content: '';
+  width: 0;
+  height: 0;
+  left: 4px;
+  right: 4px;
+}
+
+.brasil-flag .losangue:before {
+  border-left: 21px solid transparent;
+  border-right: 21px solid transparent;
+  border-bottom: 13px solid #ffe11f;
+  top: 2px;
+}
+
+.brasil-flag .losangue:after {
+  border-left: 21px solid transparent;
+  border-right: 21px solid transparent;
+  border-top: 13px solid #ffe11f;
+  bottom: 2px;
+}
+.brasil-flag .circle {
+  overflow: hidden;
+  z-index: 2;
+  display: block;
+  background-color: #1651b8;
+  height: 16px;
+  width: 16px;
+  margin-top: -8px;
+  margin-left: -8px;
+
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+.brasil-flag .circle,
+.brasil-flag .circle:before,
+.brasil-flag .circle:after {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+
+.brasil-flag .circle:before,
+.brasil-flag .circle:after {
+  width: 18px;
+  height: 8px;
+  -ms-transform: rotate(14deg);
+  -webkit-transform: rotate(14deg);
+  transform: rotate(14deg);
+}
+
+.brasil-flag .circle:before {
+  z-index: 3;
+  content: '';
+  margin-top: -4px;
+  margin-left: -9px;
+  background: #fff;
+}
+
+.brasil-flag .circle:after {
+  z-index: 4;
+  content: '';
+  margin-top: -2px;
+  margin-left: -10px;
+  background-color: #1651b8;
+}
 </style>

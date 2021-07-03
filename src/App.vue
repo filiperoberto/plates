@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <plate plate='MJL9746'/>
+    <plate v-for='placa in placas' :plate='placa.placa' :type='placa.tipo' class='placa'/>
   </div>
 </template>
 
@@ -11,6 +11,24 @@ export default {
   name: 'App',
   components: {
     Plate
+  },
+  data() {
+    return {
+      placas: [
+        { placa : 'MJL9746', tipo: 'particular'},
+        { placa : 'MJL9746', tipo: 'comercial'},
+        { placa : 'MJL9746', tipo: 'especial'},
+        { placa : 'MJL9746', tipo: 'oficial'},
+        { placa : 'MJL9746', tipo: 'colecionador'},
+        { placa : 'MJL9746', tipo: 'diplomatico'},
+        { placa : 'MJL9H46', tipo: 'particular'},
+        { placa : 'MJL9H46', tipo: 'comercial'},
+        { placa : 'MJL9H46', tipo: 'especial'},
+        { placa : 'MJL9H46', tipo: 'oficial'},
+        { placa : 'MJL9H46', tipo: 'colecionador'},
+        { placa : 'MJL9H46', tipo: 'diplomatico'}
+      ]
+    }
   }
 }
 </script>
@@ -18,4 +36,8 @@ export default {
   #app {
     padding: 10px
   }
+  .placa {
+    margin-bottom: 10px;
+  }
+
 </style>
