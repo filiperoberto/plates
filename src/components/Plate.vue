@@ -45,7 +45,7 @@ export default {
     },
     moto: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   computed: {
@@ -135,10 +135,18 @@ export default {
     background: #c2c2c2;
   }
 
+  .plate-particular .detalhe-circulo {
+    background:  #a5a5a5;
+  }
+
   .cinza.plate-comercial {
     border-color:#b23222;
     color:white;
     background:#e1422e;
+  }
+
+  .plate-comercial .detalhe-circulo {
+    background:#b23222;
   }
 
   .cinza.plate-especial {
@@ -147,10 +155,18 @@ export default {
     background:#519d3c;
   }
 
+  .plate-especial .detalhe-circulo {
+    background:#3f7c30;
+  }
+
   .cinza.plate-oficial {
     border-color:#244180;
     background:#2d52a0;
     color:white;
+  }
+
+  .plate-oficial .detalhe-circulo {
+    background:#244180;
   }
 
   .cinza.plate-colecionador {
@@ -159,9 +175,17 @@ export default {
     color:#c2c2c2;
   }
 
+  .plate-colecionador .detalhe-circulo {
+    background:#000000;
+  }
+
   .cinza.plate-diplomatico {
     border-color:#c2c2c2;
     color:#b23222;
+  }
+
+  .plate-diplomatico .detalhe-circulo {
+    background:#c2c2c2;
   }
 
   .plate-container {
@@ -189,14 +213,21 @@ export default {
     justify-content:center;
   }
 
+  .header-cinza {
+    display:flex;
+    justify-content: space-evenly;
+  }
+
   .detalhe-circulo {
     display:inline-block;
-    width: 10%;
+    width:40em;
     height:10em;
-    background: gray;
-    border-radius: 5em;
-    margin-right:10em;
-    display:none;
+    border-radius: 3em;
+  }
+
+  .moto .detalhe-circulo {
+    width: 10em;
+    border-radius: 100%;
   }
 
   .header-mercosul {
