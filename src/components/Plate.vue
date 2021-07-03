@@ -1,7 +1,10 @@
 <template>
   <div class='plate'>
-    <span>{{letters}}</span>
-    <span>{{numbers}}</span>
+    <span class='header'>BRASIL</span>
+    <div class='plate-container'>
+      <span>{{letters}}</span>
+      <span>{{numbers}}</span>
+    </div>
   </div>
 </template>
 
@@ -21,18 +24,36 @@ export default {
 }
 </script>
 <style scoped>
-  .plate {
+  .plate, .plate * {
     box-sizing: border-box;
-    width: 100%;
-    border: 0.2em solid #101c36;
-    border-radius: 0.2em;
-    text-align:center;
-    font-size: 4em;
-    padding:0.4em;
-    letter-spacing: 0.1em;
   }
 
-  .plate > span {
+  .plate {
+    width: 100%;
+    border: 9px solid #101c36;
+    border-radius: 5px;
+    text-align:center;
+  }
+
+  .plate-container {
+    padding:0.4em;
+    letter-spacing: 10px;
+    font-size: 50px;
+  }
+
+  .plate-container > span {
     display: inline-block;
+  }
+
+  .header {
+    display: block;
+    background: #1e4ab3;
+    height: 30px;
+    margin: 0;
+    width:100%;
+    display: flex;
+    align-items: center;
+    color: white;
+    justify-content:center;
   }
 </style>
