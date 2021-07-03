@@ -6,7 +6,7 @@
     </span>
     <span v-else class='header header-cinza'>
       <span class='detalhe-circulo'></span>
-      <span class='cidade'>SC - FLORIANÓPOLIS</span>
+      <span class='cidade'>{{uf}} - {{municipio}}</span>
       <span class='detalhe-circulo'></span>
     </span>
     <div class='plate-container' ref='plateContainer'>
@@ -34,6 +34,14 @@ export default {
     type: {
       type: String,
       default: 'particular'
+    },
+    uf: {
+      type: String,
+      default: 'UF'
+    },
+    municipio: {
+      type: String,
+      default: 'municipio'
     }
   },
   computed: {
@@ -182,5 +190,9 @@ export default {
   .header-mercosul {
     background: #1e4ab3;
     color: white;
+  }
+
+  .cidade {
+    text-transform:uppercase;
   }
 </style>
