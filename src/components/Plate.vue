@@ -1,5 +1,5 @@
 <template>
-  <div class='plate' :class='`plate-${type}`' :class="{'mercosul': mercosul, 'cinza': !mercosul, 'moto': moto}">
+  <div class='plate' :class="[{'mercosul': mercosul, 'cinza': !mercosul, 'moto': moto}, `plate-${type}`]">
     <span class='header header-mercosul' v-if='mercosul'>
       <span class='cidade'>BRASIL</span>
       <bandeira class='bandeira'/>
